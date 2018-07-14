@@ -1,0 +1,1 @@
+# kisi-kayit-otomasyon
