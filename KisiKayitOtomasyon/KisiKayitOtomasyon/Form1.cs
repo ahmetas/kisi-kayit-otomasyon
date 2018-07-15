@@ -17,11 +17,13 @@ namespace KisiKayitOtomasyon
         public Form1()
         {
             InitializeComponent();
-            connect = new SqlConnection("Data Source=localhost;Initial Catalog=local;Integrated Security=True; MultipleActiveResultSets=True");
+            connect = new SqlConnection("Data Source=localhost;Initial Catalog=local;Integrated Security=True");
         }
 
         private void EkleButton_click(object sender, EventArgs e)
         {
+            if (HataliGiris(IsimText) || HataliGiris(SoyIsimText) || HataliGiris(KimlikNoText)) { return; }
+
             connect.Open();
 
             SqlCommand cmd = new SqlCommand("INSERT INTO dbo.kisiler (Isim, SoyIsim, KimlikNo, DogumYili) VALUES (@Isim, @SoyIsim, @KimlikNo, @DogumYili)", connect);
@@ -29,7 +31,7 @@ namespace KisiKayitOtomasyon
             cmd.Parameters.AddWithValue("@Isim", IsimText.Text);
             cmd.Parameters.AddWithValue("@SoyIsim", SoyIsimText.Text);
             cmd.Parameters.AddWithValue("@KimlikNo", KimlikNoText.Text);
-            cmd.Parameters.AddWithValue("@DogumYili", DogumYiliText.Text);
+            cmd.Parameters.AddWithValue("@DogumYili", DogumYili.Value);
             cmd.ExecuteNonQuery();
 
             connect.Close();
@@ -60,18 +62,26 @@ namespace KisiKayitOtomasyon
 
             connect.Open();
 
-            SqlCommand cmd = new SqlCommand("Select Isim from dbo.kisiler", connect);
-            SqlCommand cmd2 = new SqlCommand("Select SoyIsim from dbo.kisiler", connect);
+            SqlCommand cmd = new SqlCommand("Select * from dbo.kisiler", connect);
 
             SqlDataReader reader = cmd.ExecuteReader();
-            SqlDataReader reader2 = cmd2.ExecuteReader();
 
-            while (reader.Read() && reader2.Read())
+            while (reader.Read())
             {
-                KullaniciList.Items.Add(reader.GetString(0) + " " + reader2.GetString(0));
+                KullaniciList.Items.Add(reader.GetString(1) + " " + reader.GetString(2));
             }
 
             connect.Close();
+        }
+
+        private bool HataliGiris(TextBox textBox)
+        {
+            if (string.IsNullOrEmpty(textBox.Text))
+            {
+                MessageBox.Show("Gerekli alanlar boş bırakılmaz");
+                return true;
+            }
+            return false;
         }
     }
 }

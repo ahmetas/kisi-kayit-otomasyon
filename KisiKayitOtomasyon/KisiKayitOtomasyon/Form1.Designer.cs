@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.EkleButton = new System.Windows.Forms.Button();
             this.SoyIsimText = new System.Windows.Forms.TextBox();
             this.AraButton = new System.Windows.Forms.Button();
@@ -36,11 +37,13 @@
             this.SoyIsimLabel = new System.Windows.Forms.Label();
             this.KimlikNoText = new System.Windows.Forms.TextBox();
             this.KimlikNoLabel = new System.Windows.Forms.Label();
-            this.DogumYiliText = new System.Windows.Forms.TextBox();
             this.DogumYiliLabel = new System.Windows.Forms.Label();
             this.KullaniciList = new System.Windows.Forms.ListBox();
             this.label5 = new System.Windows.Forms.Label();
             this.ListeleButton = new System.Windows.Forms.Button();
+            this.DogumYili = new System.Windows.Forms.NumericUpDown();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.DogumYili)).BeginInit();
             this.SuspendLayout();
             // 
             // EkleButton
@@ -48,7 +51,7 @@
             this.EkleButton.Location = new System.Drawing.Point(59, 174);
             this.EkleButton.Name = "EkleButton";
             this.EkleButton.Size = new System.Drawing.Size(75, 23);
-            this.EkleButton.TabIndex = 0;
+            this.EkleButton.TabIndex = 5;
             this.EkleButton.Text = "Ekle";
             this.EkleButton.UseVisualStyleBackColor = true;
             this.EkleButton.Click += new System.EventHandler(this.EkleButton_click);
@@ -66,7 +69,7 @@
             this.AraButton.Location = new System.Drawing.Point(59, 145);
             this.AraButton.Name = "AraButton";
             this.AraButton.Size = new System.Drawing.Size(75, 23);
-            this.AraButton.TabIndex = 2;
+            this.AraButton.TabIndex = 4;
             this.AraButton.Text = "Ara";
             this.AraButton.UseVisualStyleBackColor = true;
             this.AraButton.Click += new System.EventHandler(this.AraButton_Click);
@@ -79,7 +82,7 @@
             this.IsimText.Location = new System.Drawing.Point(72, 23);
             this.IsimText.Name = "IsimText";
             this.IsimText.Size = new System.Drawing.Size(100, 20);
-            this.IsimText.TabIndex = 3;
+            this.IsimText.TabIndex = 0;
             this.IsimText.Tag = "";
             // 
             // IsimLabel
@@ -103,9 +106,10 @@
             // KimlikNoText
             // 
             this.KimlikNoText.Location = new System.Drawing.Point(72, 75);
+            this.KimlikNoText.MaxLength = 11;
             this.KimlikNoText.Name = "KimlikNoText";
             this.KimlikNoText.Size = new System.Drawing.Size(100, 20);
-            this.KimlikNoText.TabIndex = 6;
+            this.KimlikNoText.TabIndex = 2;
             // 
             // KimlikNoLabel
             // 
@@ -115,13 +119,6 @@
             this.KimlikNoLabel.Size = new System.Drawing.Size(51, 13);
             this.KimlikNoLabel.TabIndex = 7;
             this.KimlikNoLabel.Text = "Kimlik No";
-            // 
-            // DogumYiliText
-            // 
-            this.DogumYiliText.Location = new System.Drawing.Point(72, 101);
-            this.DogumYiliText.Name = "DogumYiliText";
-            this.DogumYiliText.Size = new System.Drawing.Size(100, 20);
-            this.DogumYiliText.TabIndex = 8;
             // 
             // DogumYiliLabel
             // 
@@ -154,21 +151,43 @@
             this.ListeleButton.Location = new System.Drawing.Point(271, 254);
             this.ListeleButton.Name = "ListeleButton";
             this.ListeleButton.Size = new System.Drawing.Size(75, 23);
-            this.ListeleButton.TabIndex = 12;
+            this.ListeleButton.TabIndex = 6;
             this.ListeleButton.Text = "Listele";
             this.ListeleButton.UseVisualStyleBackColor = true;
             this.ListeleButton.Click += new System.EventHandler(this.ListeleButton_Click);
+            // 
+            // DogumYili
+            // 
+            this.DogumYili.Location = new System.Drawing.Point(72, 104);
+            this.DogumYili.Maximum = new decimal(new int[] {
+            2018,
+            0,
+            0,
+            0});
+            this.DogumYili.Minimum = new decimal(new int[] {
+            1900,
+            0,
+            0,
+            0});
+            this.DogumYili.Name = "DogumYili";
+            this.DogumYili.Size = new System.Drawing.Size(100, 20);
+            this.DogumYili.TabIndex = 3;
+            this.DogumYili.Value = new decimal(new int[] {
+            2018,
+            0,
+            0,
+            0});
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(424, 452);
+            this.Controls.Add(this.DogumYili);
             this.Controls.Add(this.ListeleButton);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.KullaniciList);
             this.Controls.Add(this.DogumYiliLabel);
-            this.Controls.Add(this.DogumYiliText);
             this.Controls.Add(this.KimlikNoLabel);
             this.Controls.Add(this.KimlikNoText);
             this.Controls.Add(this.SoyIsimLabel);
@@ -179,6 +198,7 @@
             this.Controls.Add(this.EkleButton);
             this.Name = "Form1";
             this.Text = "Form1";
+            ((System.ComponentModel.ISupportInitialize)(this.DogumYili)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -194,11 +214,12 @@
         private System.Windows.Forms.Label SoyIsimLabel;
         private System.Windows.Forms.TextBox KimlikNoText;
         private System.Windows.Forms.Label KimlikNoLabel;
-        private System.Windows.Forms.TextBox DogumYiliText;
         private System.Windows.Forms.Label DogumYiliLabel;
         private System.Windows.Forms.ListBox KullaniciList;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button ListeleButton;
+        private System.Windows.Forms.NumericUpDown DogumYili;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
 
