@@ -83,5 +83,24 @@ namespace KisiKayitOtomasyon
             }
             return false;
         }
+
+        private void GirisButton_Click(object sender, EventArgs e)
+        {
+            connect.Open();
+
+            SqlCommand cmd = new SqlCommand("Select * from dbo.kullanicilar where UserName=@UserName", connect);
+            cmd.Parameters.AddWithValue("@UserName", KullaniciAdiText.Text);
+
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            if (reader.Read() && reader.GetString(3) == SifreText.Text)
+                durumLabel.Text = reader.GetInt32(1) == 0
+                    ? "yönetici girişi başarılı."
+                    : "kullanıcı girişi başarılı.";
+            else
+                MessageBox.Show("Kullanıcı adı ya da parola hatalı.");
+
+            connect.Close();
+        }
     }
 }

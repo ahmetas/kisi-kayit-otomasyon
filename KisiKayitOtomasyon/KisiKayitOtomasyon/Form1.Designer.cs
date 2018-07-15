@@ -47,7 +47,7 @@
             this.SifreLabel = new System.Windows.Forms.Label();
             this.KullaniciAdiText = new System.Windows.Forms.TextBox();
             this.SifreText = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.durumLabel = new System.Windows.Forms.Label();
             this.GirisButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DogumYili)).BeginInit();
             this.SuspendLayout();
@@ -218,14 +218,14 @@
             this.SifreText.Size = new System.Drawing.Size(100, 20);
             this.SifreText.TabIndex = 15;
             // 
-            // label1
+            // durumLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(69, 101);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(96, 13);
-            this.label1.TabIndex = 16;
-            this.label1.Text = "Lütfen giriş yapınız.";
+            this.durumLabel.AutoSize = true;
+            this.durumLabel.Location = new System.Drawing.Point(69, 101);
+            this.durumLabel.Name = "durumLabel";
+            this.durumLabel.Size = new System.Drawing.Size(96, 13);
+            this.durumLabel.TabIndex = 16;
+            this.durumLabel.Text = "Lütfen giriş yapınız.";
             // 
             // GirisButton
             // 
@@ -235,6 +235,7 @@
             this.GirisButton.TabIndex = 17;
             this.GirisButton.Text = "Giriş";
             this.GirisButton.UseVisualStyleBackColor = true;
+            this.GirisButton.Click += new System.EventHandler(this.GirisButton_Click);
             // 
             // Form1
             // 
@@ -242,7 +243,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(424, 341);
             this.Controls.Add(this.GirisButton);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.durumLabel);
             this.Controls.Add(this.SifreText);
             this.Controls.Add(this.KullaniciAdiText);
             this.Controls.Add(this.SifreLabel);
@@ -288,7 +289,7 @@
         private System.Windows.Forms.Label SifreLabel;
         private System.Windows.Forms.TextBox KullaniciAdiText;
         private System.Windows.Forms.TextBox SifreText;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label durumLabel;
         private System.Windows.Forms.Button GirisButton;
     }
 }
