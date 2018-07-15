@@ -43,12 +43,18 @@
             this.ListeleButton = new System.Windows.Forms.Button();
             this.DogumYili = new System.Windows.Forms.NumericUpDown();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.KullaniciAdiLabel = new System.Windows.Forms.Label();
+            this.SifreLabel = new System.Windows.Forms.Label();
+            this.KullaniciAdiText = new System.Windows.Forms.TextBox();
+            this.SifreText = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.GirisButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DogumYili)).BeginInit();
             this.SuspendLayout();
             // 
             // EkleButton
             // 
-            this.EkleButton.Location = new System.Drawing.Point(59, 174);
+            this.EkleButton.Location = new System.Drawing.Point(79, 305);
             this.EkleButton.Name = "EkleButton";
             this.EkleButton.Size = new System.Drawing.Size(75, 23);
             this.EkleButton.TabIndex = 5;
@@ -58,7 +64,7 @@
             // 
             // SoyIsimText
             // 
-            this.SoyIsimText.Location = new System.Drawing.Point(72, 49);
+            this.SoyIsimText.Location = new System.Drawing.Point(72, 198);
             this.SoyIsimText.Name = "SoyIsimText";
             this.SoyIsimText.Size = new System.Drawing.Size(100, 20);
             this.SoyIsimText.TabIndex = 1;
@@ -66,7 +72,7 @@
             // 
             // AraButton
             // 
-            this.AraButton.Location = new System.Drawing.Point(59, 145);
+            this.AraButton.Location = new System.Drawing.Point(79, 276);
             this.AraButton.Name = "AraButton";
             this.AraButton.Size = new System.Drawing.Size(75, 23);
             this.AraButton.TabIndex = 4;
@@ -79,7 +85,7 @@
             this.IsimText.AccessibleDescription = "";
             this.IsimText.AccessibleName = "";
             this.IsimText.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.IsimText.Location = new System.Drawing.Point(72, 23);
+            this.IsimText.Location = new System.Drawing.Point(72, 172);
             this.IsimText.Name = "IsimText";
             this.IsimText.Size = new System.Drawing.Size(100, 20);
             this.IsimText.TabIndex = 0;
@@ -88,7 +94,7 @@
             // IsimLabel
             // 
             this.IsimLabel.AutoSize = true;
-            this.IsimLabel.Location = new System.Drawing.Point(9, 26);
+            this.IsimLabel.Location = new System.Drawing.Point(41, 175);
             this.IsimLabel.Name = "IsimLabel";
             this.IsimLabel.Size = new System.Drawing.Size(25, 13);
             this.IsimLabel.TabIndex = 4;
@@ -97,7 +103,7 @@
             // SoyIsimLabel
             // 
             this.SoyIsimLabel.AutoSize = true;
-            this.SoyIsimLabel.Location = new System.Drawing.Point(9, 52);
+            this.SoyIsimLabel.Location = new System.Drawing.Point(20, 201);
             this.SoyIsimLabel.Name = "SoyIsimLabel";
             this.SoyIsimLabel.Size = new System.Drawing.Size(46, 13);
             this.SoyIsimLabel.TabIndex = 5;
@@ -105,7 +111,7 @@
             // 
             // KimlikNoText
             // 
-            this.KimlikNoText.Location = new System.Drawing.Point(72, 75);
+            this.KimlikNoText.Location = new System.Drawing.Point(72, 224);
             this.KimlikNoText.MaxLength = 11;
             this.KimlikNoText.Name = "KimlikNoText";
             this.KimlikNoText.Size = new System.Drawing.Size(100, 20);
@@ -114,7 +120,7 @@
             // KimlikNoLabel
             // 
             this.KimlikNoLabel.AutoSize = true;
-            this.KimlikNoLabel.Location = new System.Drawing.Point(9, 78);
+            this.KimlikNoLabel.Location = new System.Drawing.Point(15, 227);
             this.KimlikNoLabel.Name = "KimlikNoLabel";
             this.KimlikNoLabel.Size = new System.Drawing.Size(51, 13);
             this.KimlikNoLabel.TabIndex = 7;
@@ -123,7 +129,7 @@
             // DogumYiliLabel
             // 
             this.DogumYiliLabel.AutoSize = true;
-            this.DogumYiliLabel.Location = new System.Drawing.Point(9, 104);
+            this.DogumYiliLabel.Location = new System.Drawing.Point(9, 252);
             this.DogumYiliLabel.Name = "DogumYiliLabel";
             this.DogumYiliLabel.Size = new System.Drawing.Size(57, 13);
             this.DogumYiliLabel.TabIndex = 9;
@@ -134,7 +140,7 @@
             this.KullaniciList.FormattingEnabled = true;
             this.KullaniciList.Location = new System.Drawing.Point(205, 23);
             this.KullaniciList.Name = "KullaniciList";
-            this.KullaniciList.Size = new System.Drawing.Size(207, 225);
+            this.KullaniciList.Size = new System.Drawing.Size(207, 277);
             this.KullaniciList.TabIndex = 10;
             // 
             // label5
@@ -148,7 +154,7 @@
             // 
             // ListeleButton
             // 
-            this.ListeleButton.Location = new System.Drawing.Point(271, 254);
+            this.ListeleButton.Location = new System.Drawing.Point(271, 305);
             this.ListeleButton.Name = "ListeleButton";
             this.ListeleButton.Size = new System.Drawing.Size(75, 23);
             this.ListeleButton.TabIndex = 6;
@@ -158,7 +164,7 @@
             // 
             // DogumYili
             // 
-            this.DogumYili.Location = new System.Drawing.Point(72, 104);
+            this.DogumYili.Location = new System.Drawing.Point(72, 250);
             this.DogumYili.Maximum = new decimal(new int[] {
             2018,
             0,
@@ -178,11 +184,69 @@
             0,
             0});
             // 
+            // KullaniciAdiLabel
+            // 
+            this.KullaniciAdiLabel.AutoSize = true;
+            this.KullaniciAdiLabel.Location = new System.Drawing.Point(2, 26);
+            this.KullaniciAdiLabel.Name = "KullaniciAdiLabel";
+            this.KullaniciAdiLabel.Size = new System.Drawing.Size(64, 13);
+            this.KullaniciAdiLabel.TabIndex = 12;
+            this.KullaniciAdiLabel.Text = "Kullanıcı Adı";
+            // 
+            // SifreLabel
+            // 
+            this.SifreLabel.AutoSize = true;
+            this.SifreLabel.Location = new System.Drawing.Point(38, 52);
+            this.SifreLabel.Name = "SifreLabel";
+            this.SifreLabel.Size = new System.Drawing.Size(28, 13);
+            this.SifreLabel.TabIndex = 13;
+            this.SifreLabel.Text = "Şifre";
+            // 
+            // KullaniciAdiText
+            // 
+            this.KullaniciAdiText.Location = new System.Drawing.Point(72, 23);
+            this.KullaniciAdiText.MaxLength = 12;
+            this.KullaniciAdiText.Name = "KullaniciAdiText";
+            this.KullaniciAdiText.Size = new System.Drawing.Size(100, 20);
+            this.KullaniciAdiText.TabIndex = 14;
+            // 
+            // SifreText
+            // 
+            this.SifreText.Location = new System.Drawing.Point(72, 49);
+            this.SifreText.MaxLength = 12;
+            this.SifreText.Name = "SifreText";
+            this.SifreText.Size = new System.Drawing.Size(100, 20);
+            this.SifreText.TabIndex = 15;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(69, 101);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(96, 13);
+            this.label1.TabIndex = 16;
+            this.label1.Text = "Lütfen giriş yapınız.";
+            // 
+            // GirisButton
+            // 
+            this.GirisButton.Location = new System.Drawing.Point(79, 75);
+            this.GirisButton.Name = "GirisButton";
+            this.GirisButton.Size = new System.Drawing.Size(75, 23);
+            this.GirisButton.TabIndex = 17;
+            this.GirisButton.Text = "Giriş";
+            this.GirisButton.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(424, 452);
+            this.ClientSize = new System.Drawing.Size(424, 341);
+            this.Controls.Add(this.GirisButton);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.SifreText);
+            this.Controls.Add(this.KullaniciAdiText);
+            this.Controls.Add(this.SifreLabel);
+            this.Controls.Add(this.KullaniciAdiLabel);
             this.Controls.Add(this.DogumYili);
             this.Controls.Add(this.ListeleButton);
             this.Controls.Add(this.label5);
@@ -220,6 +284,12 @@
         private System.Windows.Forms.Button ListeleButton;
         private System.Windows.Forms.NumericUpDown DogumYili;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Label KullaniciAdiLabel;
+        private System.Windows.Forms.Label SifreLabel;
+        private System.Windows.Forms.TextBox KullaniciAdiText;
+        private System.Windows.Forms.TextBox SifreText;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button GirisButton;
     }
 }
 
