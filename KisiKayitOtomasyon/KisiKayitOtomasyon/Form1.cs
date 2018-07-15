@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,9 +13,65 @@ namespace KisiKayitOtomasyon
 {
     public partial class Form1 : Form
     {
+        SqlConnection connect;
         public Form1()
         {
             InitializeComponent();
+            connect = new SqlConnection("Data Source=localhost;Initial Catalog=local;Integrated Security=True; MultipleActiveResultSets=True");
+        }
+
+        private void EkleButton_click(object sender, EventArgs e)
+        {
+            connect.Open();
+
+            SqlCommand cmd = new SqlCommand("INSERT INTO dbo.kisiler (Isim, SoyIsim, KimlikNo, DogumYili) VALUES (@Isim, @SoyIsim, @KimlikNo, @DogumYili)", connect);
+
+            cmd.Parameters.AddWithValue("@Isim", IsimText.Text);
+            cmd.Parameters.AddWithValue("@SoyIsim", SoyIsimText.Text);
+            cmd.Parameters.AddWithValue("@KimlikNo", KimlikNoText.Text);
+            cmd.Parameters.AddWithValue("@DogumYili", DogumYiliText.Text);
+            cmd.ExecuteNonQuery();
+
+            connect.Close();
+        }
+
+        private void AraButton_Click(object sender, EventArgs e)
+        {
+            connect.Open();
+
+            SqlCommand cmd = new SqlCommand("SELECT Isim from dbo.kisiler where KisiId=@Id", connect);
+
+            cmd.Parameters.AddWithValue("@Id", SoyIsimText.Text);
+            try
+            {
+                var sonuc = (string)cmd.ExecuteScalar();
+                MessageBox.Show(sonuc.ToString());
+            }
+            catch
+            {
+                MessageBox.Show("Böyle bir kullanıcı mevcut değil.");
+            }
+            connect.Close();
+        }
+
+        private void ListeleButton_Click(object sender, EventArgs e)
+        {
+            if (KullaniciList.Items != null) { KullaniciList.Items.Clear(); };
+
+            connect.Open();
+
+            SqlCommand cmd = new SqlCommand("Select Isim from dbo.kisiler", connect);
+            SqlCommand cmd2 = new SqlCommand("Select SoyIsim from dbo.kisiler", connect);
+
+            SqlDataReader reader = cmd.ExecuteReader();
+            SqlDataReader reader2 = cmd2.ExecuteReader();
+
+            while (reader.Read() && reader2.Read())
+            {
+                KullaniciList.Items.Add(reader.GetString(0) + " " + reader2.GetString(0));
+            }
+
+            connect.Close();
         }
     }
 }
