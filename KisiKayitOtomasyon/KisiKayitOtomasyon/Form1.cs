@@ -14,6 +14,9 @@ namespace KisiKayitOtomasyon
     public partial class Form1 : Form
     {
         SqlConnection connect;
+
+        bool isAdmin;
+        bool isUser;
         public Form1()
         {
             InitializeComponent();
@@ -22,6 +25,13 @@ namespace KisiKayitOtomasyon
 
         private void EkleButton_click(object sender, EventArgs e)
         {
+            if (!isAdmin)
+            {
+                if (isUser)
+                    MessageBox.Show("Bunun için yönetici girişi gerekli.");
+                return;
+            }
+
             if (HataliGiris(IsimText) || HataliGiris(SoyIsimText) || HataliGiris(KimlikNoText)) { return; }
 
             connect.Open();
@@ -39,6 +49,8 @@ namespace KisiKayitOtomasyon
 
         private void AraButton_Click(object sender, EventArgs e)
         {
+            if (!isUser) { return; }
+
             connect.Open();
 
             SqlCommand cmd = new SqlCommand("SELECT Isim from dbo.kisiler where KisiId=@Id", connect);
@@ -58,6 +70,8 @@ namespace KisiKayitOtomasyon
 
         private void ListeleButton_Click(object sender, EventArgs e)
         {
+            if (!isUser) { return; }
+
             if (KullaniciList.Items != null) { KullaniciList.Items.Clear(); };
 
             connect.Open();
@@ -86,6 +100,8 @@ namespace KisiKayitOtomasyon
 
         private void GirisButton_Click(object sender, EventArgs e)
         {
+            if (isUser || isAdmin) { return; }
+
             connect.Open();
 
             SqlCommand cmd = new SqlCommand("Select * from dbo.kullanicilar where UserName=@UserName", connect);
@@ -94,9 +110,18 @@ namespace KisiKayitOtomasyon
             SqlDataReader reader = cmd.ExecuteReader();
 
             if (reader.Read() && reader.GetString(3) == SifreText.Text)
-                durumLabel.Text = reader.GetInt32(1) == 0
-                    ? "yönetici girişi başarılı."
-                    : "kullanıcı girişi başarılı.";
+            {
+                if (reader.GetInt32(1) == 0)
+                {
+                    durumLabel.Text = "yönetici girişi başarılı.";
+                    isAdmin = true;
+                }
+                else
+                {
+                    durumLabel.Text = "kullanıcı girişi başarılı.";
+                    isUser = true;
+                }
+            }
             else
                 MessageBox.Show("Kullanıcı adı ya da parola hatalı.");
 
